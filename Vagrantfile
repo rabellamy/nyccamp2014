@@ -21,7 +21,11 @@ Vagrant.configure("2") do |config|
 
   data['vm']['synced_folder'].each do |i, folder|
     nfs = (folder['nfs'] == "true") ? "nfs" : nil
-    config.vm.synced_folder "#{folder['source']}", "#{folder['target']}", id: "#{folder['id']}", type: nfs
+    config.vm.synced_folder "#{folder['source']}", "#{folder['target']}", id: "#{folder['id']}",
+    type: nfs,
+    owner: "vagrant",
+    group: "www-data",
+    mount_options: ["dmode=775,fmode=664"]
   end
 
   config.vm.usable_port_range = (10200..10500)

@@ -35,10 +35,13 @@ Thumbs.db
 ._*
 
 # Vim generated files #
-######################
+#######################
 *.un~
 
-# SASS #
-##########
+# SASS generated files #
+########################
 .sass-cache
+
+# Vagrant generated files #
+###########################
 .vagrant
