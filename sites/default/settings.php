@@ -211,6 +211,14 @@
  * @endcode
  */
 $databases = array();
+$databases['default']['default'] = array(
+  'driver' => 'mysql',
+  'database' => 'nyccamp2014',
+  'username' => 'nyccamp2014',
+  'password' => 'nyccamp2014',
+  'host' => 'localhost',
+  'collation' => 'utf8_general_ci',
+);
 
 /**
  * Access control for update.php script.

@@ -6,12 +6,19 @@ vagrantfile-local:
         hostname: null
         network:
             private_network: 192.168.56.101
-            forwarded_port: {  }
+            forwarded_port:
+                p20096T1arHy:
+                    host: '7169'
+                    guest: '22'
+                8BQ7q3ByhiaF:
+                    host: '8080'
+                    guest: '80'
         provider:
             virtualbox:
                 modifyvm:
                     natdnshostresolver1: on
-                    memory: '512'
+                    memory: '1024'
+                    cpus: '4'
                 setextradata:
                     VBoxInternal2/SharedFoldersEnableSymlinksCreate/v-root: 1
         provision:
@@ -22,7 +29,7 @@ vagrantfile-local:
                     - '--hiera_config /vagrant/puphpet/puppet/hiera.yaml'
                     - '--parser future'
         synced_folder:
-            VQuebom3zIdw:
+            RBGUATm0B5JM:
                 id: vagrant-root
                 source: ./
                 target: /var/www
@@ -39,7 +46,7 @@ vagrantfile-local:
         forward_x11: false
         shell: 'bash -l'
     vagrant:
-        host: ':detect'
+        host: detect
 server:
     packages:
         - vim
@@ -52,11 +59,11 @@ apache:
         - php
         - rewrite
     vhosts:
-        ulZ14IC8bgSY:
-            servername: website.dev
+        uCDWEvUQEBnS:
+            servername: nyccamp2014.local
             serveraliases:
-                - www.website.dev
-            docroot: /var/www/awesome
+                - nyccamp2014
+            docroot: /var/www
             port: '80'
             setenv:
                 - 'APP_ENV dev'
@@ -69,8 +76,8 @@ apache:
     mod_pagespeed: 0
     mod_spdy: 0
 php:
-    version: '54'
-    composer: '1'
+    version: '53'
+    composer: 1
     modules:
         php:
             - cli
@@ -83,9 +90,9 @@ php:
         display_errors: On
         error_reporting: '-1'
         session.save_path: /var/lib/php/session
-    timezone: America/Chicago
+    timezone: America/New_York
 xdebug:
-    install: '1'
+    install: 0
     settings:
         xdebug.default_enable: '1'
         xdebug.remote_autostart: '0'
@@ -93,25 +100,23 @@ xdebug:
         xdebug.remote_enable: '1'
         xdebug.remote_handler: dbgp
         xdebug.remote_port: '9000'
-xhprof:
-    install: '1'
 drush:
-    install: 0
+    install: '1'
     settings:
-        drush.tag_branch: 5.x
+        drush.tag_branch: '5'
 mysql:
-    root_password: nyccamp
+    root_password: '123'
     phpmyadmin: '1'
     adminer: 0
     databases:
-        jJZeS4nPVPCf:
+        F8TeXMf2sePR:
             grant:
                 - ALL
-            name: nyccamp
+            name: nyccamp2014
             host: localhost
-            user: nyccamp
-            password: nyccamp
-            sql_file: ''
+            user: nyccamp2014
+            password: nyccamp2014
+            sql_file: /var/www/nyccamp2014.sql
 beanstalkd:
     install: 0
     listenaddress: 0.0.0.0
@@ -121,4 +126,3 @@ beanstalkd:
     binlogdir: /var/lib/beanstalkd/binlog
     binlogfsync: null
     binlogsize: '10485760'
-
