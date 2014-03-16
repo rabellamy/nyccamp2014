@@ -8,7 +8,7 @@
  * @param $hook
  *   The name of the template being rendered ("maintenance_page" in this case.)
  */
-function next-theme_preprocess_maintenance_page(&$vars, $hook) {
+function next_preprocess_maintenance_page(&$vars, $hook) {
   // When a variable is manipulated or added in preprocess_html or
   // preprocess_page, that same work is probably needed for the maintenance page
   // as well, so we can just re-use those functions to do that work here.
@@ -27,7 +27,7 @@ function next-theme_preprocess_maintenance_page(&$vars, $hook) {
  * @return
  *   An array to be output as yepnope testObjects.
  */
-function next-theme_modernizr_load_alter(&$load) {
+function next_modernizr_load_alter(&$load) {
 
   // We will check for touch events, and if we do load the hammer.js script.
   $load[] = array(
